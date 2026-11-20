@@ -7,7 +7,7 @@ function PostCard({$id,title,featuredImage}) { // $id is the name of the id stor
     <div className="w-full max-w-sm overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
    
         <img
-    src={`${service.filePreview(featuredImage)}`} // sending file id in filePreview 
+    src={`${service.filePreview(featuredImage)}`} // here the file id is automatically passed using featured image and returns url of that image 
     alt="Card image"
     className="h-48 w-full object-cover"
   />
