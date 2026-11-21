@@ -7,6 +7,7 @@ import Button from './Button.jsx'
 import Select from './Select.jsx'
 import PostCard from './PostCard.jsx'
 import Input from './Input.jsx'
+import { RTE } from './RTE.jsx'
 
 export {Header,
     Footer,
@@ -16,5 +17,6 @@ export {Header,
     Button,
     Select,
     PostCard,
-    Input
+    Input,
+    RTE
 }
