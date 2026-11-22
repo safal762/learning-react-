@@ -11,9 +11,13 @@ import Signup from './components/Signup.jsx'
 import Allpost from './pages/AllPosts.jsx'
 import Editpost from './pages/Editpost.jsx'
 import Addpost from './pages/Addpost'
+import {createBrowserRouter,createRoutesFromElements} from 'react-router-dom'
+import Home from './pages/Home'
+import Post from './pages/post'
 const router =createBrowserRouter(
   createRoutesFromElements(
-     <>
+     <Route path='/' element={<App/>}> // we need to wrap other route in a parent route which we want as an parent layout
+
        <Route path='/' element={<Home/>}/>
 
       <Route path='/login' element={<Auth authentication={true}>
@@ -41,7 +45,7 @@ const router =createBrowserRouter(
         </Auth>}/>
           
 
-     </>
+     </Route>
   )
 )
 

@@ -2,7 +2,7 @@ import Header from './header/Header.jsx'
 import Footer from './footer/Footer.jsx'
 import Logo from './Logo.jsx'
 import LogoutBtn from './header/LogoutBtn.jsx'
-import container from './container/container.jsx'
+import Container from './container/Container.jsx'
 import Button from './Button.jsx'
 import Select from './Select.jsx'
 import PostCard from './PostCard.jsx'
@@ -15,7 +15,7 @@ export {Header,
     Footer,
     Logo,
     LogoutBtn,
-    container,
+    Container,
     Button,
     Select,
     PostCard,

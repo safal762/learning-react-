@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import service from '../appwrite/config'
-import { Container } from '../components/container/Container.jsx'
+import  Container  from '../components/container/Container'
 import { Button } from '../components'
 function Post() {
     const [post,setPost]=useState([])

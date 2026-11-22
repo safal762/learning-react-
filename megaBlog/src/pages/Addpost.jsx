@@ -1,11 +1,11 @@
 import React from 'react'
 import { Post } from '../components'
-import container from '../components'
+import Container from '../components/container/Container'
 function Addpost() {
   return (
-    <container>
+    <Container>
         <Post/>
-    </container>
+    </Container>
   )
 }
 

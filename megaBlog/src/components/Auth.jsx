@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 function Protection({children,authentication=true}) { // checks weather the use is login or not and if it is ok to show the pages to the user
     const navigate=useNavigate()
-    const [loader,setLoader]=useState('true')
+    const [loader,setLoader]=useState(true)
     const authStatus=useSelector((state)=>{
         return state.auth.status 
     })

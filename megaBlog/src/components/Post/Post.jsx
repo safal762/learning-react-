@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 import {useSelector} from 'react-redux'
 import { useForm } from 'react-hook-form'
-import { service } from '../../appwrite/config'
+import service  from '../../appwrite/config.js'
 import { RTE,Button,Input,Select } from '../index'
 import { useNavigate } from 'react-router-dom'
 function Post(post) {
