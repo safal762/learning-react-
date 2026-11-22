@@ -31,7 +31,7 @@ function App() {
     <div className='h-screen flex flex-col items-center'>
       <Header/>
       <main>
-       TODO: {/* <Outlet/> */}
+       <Outlet/>
       </main>
       <Footer/>
     </div>

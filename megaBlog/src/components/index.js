@@ -8,7 +8,9 @@ import Select from './Select.jsx'
 import PostCard from './PostCard.jsx'
 import Input from './Input.jsx'
 import { RTE } from './RTE.jsx'
-
+import Signup from './Signup.jsx'
+import Login from './Login.jsx'
+import Post from './Post/Post.jsx'
 export {Header,
     Footer,
     Logo,
@@ -18,5 +20,8 @@ export {Header,
     Select,
     PostCard,
     Input,
-    RTE
+    RTE,
+    Signup,
+    Login,
+    Post
 }
