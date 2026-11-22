@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect } from 'react'
 import {useSelector} from 'react-redux'
-import { useForm, Watch } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { service } from '../../appwrite/config'
-import { RTE,Button } from '../index'
+import { RTE,Button,Input,Select } from '../index'
 import { useNavigate } from 'react-router-dom'
 function Post(post) {
         const {register,handleSubmit,getValues,control,setValue}=useForm({
@@ -40,7 +40,7 @@ function Post(post) {
                                 userId:userData.$id
                             })
                             if(dbPost){
-                                navigate(`/post${post.$id}`)
+                                navigate(`/post/${post.$id}`)
                             }
                     }
                 }
@@ -70,7 +70,96 @@ function Post(post) {
             },[Watch,slugTransform,setValue])
         
   return (
-    <div>Post</div>
+    <div className="w-full bg-white border border-gray-200 rounded-xl p-6 sm:p-8 shadow-sm">
+  <form onClick={handleSubmit(sumbit)} className="space-y-6">
+
+    <div>
+      <Input
+        label="title"
+        type="text"
+        placeholder='title'
+        {
+          ...register('title',{
+            required:true,
+            pattern:{
+              value:/^(?![ -.&,_'":?!])(?!.*[- &_'":]$)(?!.*[-.#@&,:?!]{2})[a-zA-Z0-9- .#@&,_'":.?!]+$/gm,
+              message:"enter the valid title"
+            }
+          })
+        }
+      />
+    </div>
+
+    <div>
+      <Input
+        label="slug"
+        onInput={(e)=>{
+          setValue('slug',e.target.value)
+        }}
+        {
+          ...register("slug")
+        }
+      />
+    </div>
+
+    <div>
+      <RTE
+        label="content"
+        control={control}
+        deafultValue={getValues('content')}
+        {
+          ...register('RTE',{
+            required:true
+          })
+        }
+      />
+    </div>
+
+    <div>
+      <Input
+        label="file"
+        type="file"
+        accept=".jpg,.png.pdf,.svg,.webp"
+        {
+          ...register('image',{
+            required:!post
+          })
+        }
+      />
+    </div>
+
+    {
+      post && (
+        <div className="mt-4 overflow-hidden rounded-lg border border-gray-200">
+          <img
+            src={service.filePreview(post.featuredImage)}
+            alt={post.title}
+            className="w-full max-h-64 object-cover"
+          />
+        </div>
+      )
+    }
+
+    <div>
+      <select
+        label='status'
+        options={["active","inactive"]}
+        {
+          ...register('select',{
+            required:true
+          })
+        }
+      />
+    </div>
+
+    <div className="pt-2">
+      <Button type='sumbit'>
+        {post?'updatePost':'createPost'}
+      </Button>
+    </div>
+
+  </form>
+</div>
   )
 }
 
