@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Button({
-    childern,
+    children,
     type="button",
     bgColor="bg-blue-500",
     text="white",
@@ -9,7 +9,7 @@ function Button({
     ...props  // seprading the others values 
 }) {
   return (
-    <button className={`rounded ${className} ${bgColor} ${text}`} {...props}>{childern}</button>
+    <button className={`rounded ${className} ${bgColor} ${text}`} {...props}>{children}</button>
   )
 }
 

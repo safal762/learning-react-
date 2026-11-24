@@ -1,13 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useParams } from 'react-router-dom'
 import { Container, Logo, LogoutBtn } from '../index.js'
 
 function Header() {
   const authStatus = useSelector((state) => {
     return state.auth.status
   })
-
+  const {slug}=useParams()
   const navigate = useNavigate()
 
   const navigateBtns = [
@@ -17,14 +17,15 @@ function Header() {
       active: true
     }, {
       name: "All Posts",
-      slug: "/all-posts",
+      slug: "/allpost",
       active: true
     },
     {
-      name: "create posts",
-      slug: "/create-posts",
+      name: "create post",
+      slug: "/addpost",
       active: true
-    }, {
+    },
+     {
       name: "login",
       slug: "/login",
       active: !authStatus
@@ -49,11 +50,12 @@ function Header() {
           <ul className="flex items-center gap-6">
             {
               navigateBtns.map((item) => item ? ( // using ternery operator 
-                <li key={item.name} onClick={() => { navigate(item.slug) }} className="text-sm font-medium text-gray-600 cursor-pointer hover:text-blue-600">
-                  {item.name}
-                </li>
+                <Link key={item.name} to={`${item.slug}`}>
+                  <li className="text-sm font-medium text-gray-600 cursor-pointer hover:text-blue-600">{item.name}</li>
+                </Link>
               ) : null)
             }
+ 
           </ul>
 
           {

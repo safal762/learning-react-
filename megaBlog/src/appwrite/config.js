@@ -15,19 +15,26 @@ export class Service{
         this.bucket=new Storage(this.client)
     }
 
-    async createPost({title,content,featuredImage,userId,status}){  // here we are using async beacuse it is directed like that in documentaion 
-        try {
-            return await this.database.createDocument(conf.databaseId,conf.tableId,slug,{
+     async createPost({title, slug, content, featuredImage, userId, status}) {
+    try {
+        return await this.database.createDocument(
+            conf.databaseId,
+            conf.tableId,
+            ID.unique(), // Generate a unique Appwrite document ID
+            {
                 title,
+                slug,
                 content,
                 featuredImage,
                 userId,
                 status
-            })
-        } catch (error) {
-            console.log("appwrite service :: createPost :: error",error)
-        }
+            }
+        )
+    } catch (error) {
+        console.log("appwrite service :: createPost :: error", error)
+        return false
     }
+}
 
     async updatePost(slug,{title,content,featuredImage,status}){
         try {
@@ -90,9 +97,10 @@ export class Service{
         }
     }
 
- filePreview(fileId){
-   return  this.bucket.getFilePreview(conf.bucket_Id,fileId )
- }
+ filePreview(fileId) {
+    if (!fileId) return "";
+    return this.bucket.getFileView(conf.bucket_Id, fileId);
+}
 }
 const service=new Service()
 export default service

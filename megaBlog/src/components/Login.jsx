@@ -1,5 +1,5 @@
 import {React,useState} from 'react'
-import { Link,matchPath,useNavigate } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import {Button,Input,Logo} from '../components/index'
 import { login as authLogin} from '../store/authSlice'
 import authService from '../appwrite/auth.js'
@@ -8,7 +8,7 @@ import {useForm} from 'react-hook-form'
 function Login() {
     const navigate=useNavigate()
     const dispatch=useDispatch()
-    const {register,handelSumbit} = useForm()  // this is not a login related register // we get this register from rect-hook-form it is a syntax 
+    const {register, handleSubmit} = useForm()  // this is not a login related register // we get this register from rect-hook-form it is a syntax 
     const [error,setError]=useState("")
 
     const login =async(data)=>{
@@ -22,7 +22,10 @@ function Login() {
                 navigate('/') 
             }
           }
+          console.log('login sumbited',data)
         } catch (error) {
+
+  console.log("Login error:", error)
             setError(error.message)
         }
     }
@@ -44,12 +47,13 @@ function Login() {
       {
         error && (
           <p className="bg-red-50 text-red-600 text-sm p-3 rounded-md mb-4">
-            {error}
+            {error} 
+            {console.log(error)}
           </p>
         )
       }
 
-      <form onClick={handelSumbit(login)} className="space-y-5">
+      <form onSubmit={handleSubmit(login)} className="space-y-5">
         <div>
           <Input
             label="email"
@@ -83,6 +87,10 @@ function Login() {
             }
           />
         </div>
+            
+              <div>
+                <Button type='submit'>Login</Button>
+              </div>
       </form>
     </div>
   </div>

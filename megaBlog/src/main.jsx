@@ -24,7 +24,7 @@ const router =createBrowserRouter(
         <Login/>
       </Auth>}/>
 
-        <Route path='/signup' element={<Auth authentication>
+        <Route path='/signup' element={<Auth authentication={false}>
           <Signup/>
         </Auth>}/>
 
@@ -36,7 +36,7 @@ const router =createBrowserRouter(
           <Addpost/>
         </Auth>}/>
 
-        <Route path='/editpost/:slug' element={<Auth authentication>
+        <Route path='/edit-post/:slug' element={<Auth authentication>
           <Editpost/>
         </Auth>}/>
 

@@ -19,7 +19,7 @@ function Protection({children,authentication=true}) { // checks weather the use 
         }
         setLoader(false)
     },[navigate,loader,authentication])
-  return loader ? <h1>Loading...</h1>:{children}
+  return loader ? <h1>Loading...</h1>:<div>{children}</div>
 }
 
 export default Protection

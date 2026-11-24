@@ -1,12 +1,14 @@
 import React from 'react'
-import { Post } from '../components'
-import Container from '../components/container/Container'
-function Addpost() {
+import { Container, Post } from '../components'
+
+function AddPost() {
   return (
-    <Container>
-        <Post/>
-    </Container>
+    <div className='py-8'>
+        <Container>
+            <Post />
+        </Container>
+    </div>
   )
 }
 
-export default Addpost
+export default AddPost

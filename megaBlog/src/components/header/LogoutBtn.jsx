@@ -14,7 +14,7 @@ function LogoutBtn() {
       })
     }
   return (
-  <div className="bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer">
+  <div className="bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer" onClick={logoutHandeler}>
   LogoutBtn
 </div>
   )
